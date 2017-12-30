@@ -25,4 +25,5 @@ ReactDom.render(
 		<App />
 	</Provider>),
 	document.getElementById('root')
-)//Add gun pass to the App component as parameter
+)
+//Add gun pass to the App component as parameter

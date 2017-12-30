@@ -95,6 +95,7 @@
       "react-app"
     ],
     "plugins": [
+      "babel-plugin-transform-decorators-legacy",
       [
         "import",
         {
@@ -108,6 +109,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "esformatter-jsx": "^8.0.1"
   }
 }
