@@ -17,13 +17,11 @@ import {
   applyMiddleware,
   compose
 } from 'redux' //Use applymiddleware to start thunk middleware
-import {
-  counter
-} from './index.redux'
+import reducers from './reducer'//合并两个模块
 import Auth from './Auth'
 import Dashboard from './Dashboard'
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f => f
-const store = createStore(counter, compose(
+const store = createStore(reducers, compose(
   applyMiddleware(thunk),
   reduxDevtools
 ))
@@ -35,6 +33,7 @@ function render() {
 render()
 store.subscribe(render)//状态改变(add/deduce gun)重新执行store(render)
 */
+//console.log(store.getState())//show redux content
 
 class Test extends React.Component {
   constructor(props) {

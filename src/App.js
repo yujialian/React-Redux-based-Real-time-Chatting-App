@@ -14,10 +14,14 @@ import {
 //const actionCreators = { addGun, removeGun, addGunAsync}
 //App = connect(mapStatetoProps,actionCreators)(App)//Automatiically put state and { addGun, removeGun, addGunAsync} into props.
 @connect(
-  //第一个属性：要state里的什么属性,并且放到props里
-  state => ({
-    num: state
-  }),
+  /*
+  第一个属性：要state里的什么属性,并且放到props里
+  因为 combineReducers 之后，state 就不是之前单个的数字，而变成了一个对象，
+  你把组件里用到 redux 数据的地方，都打印一下，应该是有地方是对象  比如之前是
+   state.num 现在应该是 state.counter.num
+  */
+  state => ({num:state.counter}),
+
   //你要什么方法，放到props里，自动dispatch
   {
     addGun,
