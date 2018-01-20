@@ -1,6 +1,14 @@
 //New store
 import React from 'react'
 import ReactDom from 'react-dom'
+import thunk from 'redux-thunk'
+import reducers from './reducer'//合并两个模块
+import Login from './container/login/login'
+import Register from './container/register/register'
+import './config'//Execute config.js
+import {
+  Provider
+} from 'react-redux'
 import {
   BrowserRouter,
   Route,
@@ -8,18 +16,11 @@ import {
   Redirect,
   Switch
 } from 'react-router-dom'
-import thunk from 'redux-thunk'
-import {
-  Provider
-} from 'react-redux'
 import {
   createStore,
   applyMiddleware,
   compose
 } from 'redux' //Use applymiddleware to start thunk middleware
-
-import reducers from './reducer'//合并两个模块
-import './config'//Execute config.js
 
 const store = createStore(reducers, compose(
   applyMiddleware(thunk),
@@ -30,9 +31,13 @@ const store = createStore(reducers, compose(
 ReactDom.render(
   (<Provider store={store}>
 		<BrowserRouter>
-		<Switch>
+
 			{/*only render the very first route*/}
-		</Switch>
+      <div>
+        <Route path='/login' component={Login}></Route>
+        <Route path='/register' component={Register}></Route>
+      </div>
+		
 		</BrowserRouter>
 	</Provider>),
   document.getElementById('root')
