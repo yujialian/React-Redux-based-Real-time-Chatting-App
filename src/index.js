@@ -17,7 +17,9 @@ import {
   applyMiddleware,
   compose
 } from 'redux' //Use applymiddleware to start thunk middleware
+
 import reducers from './reducer'//合并两个模块
+import './config'//Execute config.js
 import Auth from './Auth'
 import Dashboard from './Dashboard'
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f => f
@@ -35,15 +37,15 @@ store.subscribe(render)//状态改变(add/deduce gun)重新执行store(render)
 */
 //console.log(store.getState())//show redux content
 
-class Test extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    console.log(this.props);
-    return <h2>Test component {this.props.match.params.location}</h2>
-  }
-}
+// class Test extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
+//   render() {
+//     //console.log(this.props);
+//     return <h2>Test component {this.props.match.params.location}</h2>
+//   }
+// }
 
 ReactDom.render(
   (<Provider store={store}>
