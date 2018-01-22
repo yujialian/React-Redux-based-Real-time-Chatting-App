@@ -2,7 +2,7 @@ const express = require('express')
 const Router = express.Router()
 const models = require('./model')
 const User = models.getModel('user')
-
+const utils = require('utility')
 Router.get('/list',function(req, res) {
   User.find({}, function(err, doc) {
     return res.json(doc)
@@ -15,11 +15,10 @@ Router.post('/register', function(req, res) {
     if(doc) {
       return res.json({code:1, msg:'Duplicate username!'})
     }
-    User.create({user,pwd,type}, function(err,doc) {
+    User.create({user,pwd:md5Pwd(pwd),type}, function(err,doc) {
       if(err) {
         return res.json({code:1, msg:'Back-end err!'})
       }
-
       return res.json({code:0})
     })
   })
@@ -28,5 +27,8 @@ Router.get('/info',function(req, res) {
   //User have cookie or not
   return res.json({code:1})
 })
-
+function md5Pwd(pwd) {//Encript user's password.
+  const salt = 'react_is_cool_asef234g35234far23#!@!#$(%)'
+  return utils.md5(utils.md5(pwd+salt))
+}
 module.exports = Router
