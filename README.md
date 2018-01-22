@@ -1,7 +1,7 @@
 # talent_hunter
 
 
-Below is some explain about the configuration in package.json when I am doing this project:
+Below is some q/a I met while doing this project:
 
 1. babel-plugin-import: On demand loading when use ant-design.
 2. transform-decorators-legacy: When writing redux, support @ service(decorators).
