@@ -7,6 +7,7 @@ import Login from './container/login/login'
 import AuthRoute from './component/auth_route/auth_route'
 import Register from './container/register/register'
 import './config'//Execute config.js
+import './index.css'
 import {
   Provider
 } from 'react-redux'

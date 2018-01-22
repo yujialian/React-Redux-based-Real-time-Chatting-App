@@ -1,10 +1,19 @@
 import React from 'react'
 import Logo from '../../component/logo/logo'
 import {List, InputItem, Radio, WingBlank, WhiteSpace, Button} from 'antd-mobile'
+import {connect} from 'react-redux'
+import {register} from '../../redux/user.redux'
+
+@connect(
+  state=>state.user,//Import the user function in user.redux
+  {register}
+)
+
 
 class Register extends React.Component {
   constructor(props) {
     super(props)
+    console.log({register})
     this.state = {
       user:'',
       pwd:'',
@@ -23,6 +32,7 @@ class Register extends React.Component {
     })
   }
   handleRegister() {
+    this.props.register(this.state)
     console.log(this.state)
   }
   render() {
@@ -30,8 +40,9 @@ class Register extends React.Component {
     return (
       <div>
         <Logo></Logo>
-        <h2>Register page</h2>
+
         <List>
+          {this.props.msg?<p className='error-msg'>{this.props.msg}</p>:null}
           <InputItem placeholder="Please enter username"
             onChange = {v=>this.handleChange('user',v)}>Username</InputItem>
           <WhiteSpace />
