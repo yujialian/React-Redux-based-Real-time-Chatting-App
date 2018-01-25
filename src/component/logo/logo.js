@@ -4,7 +4,7 @@ import './logo.css'//Only .js can be ignored, you can not do: import 'logo';
 class Logo extends React.Component {
   render() {
     return (
-      <div class="logo-container">
+      <div className="logo-container">
         <img src={logoImg} alt=""/>
       </div>
     )
