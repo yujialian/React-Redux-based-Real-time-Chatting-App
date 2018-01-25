@@ -1,7 +1,7 @@
 # talent_hunter
 
 
-Below is some q/a I met while doing this project:
+Below is some Q/A I met while doing this project:
 
 1. babel-plugin-import: On demand loading when use ant-design.
 2. transform-decorators-legacy: When writing redux, support @ service(decorators).
@@ -10,3 +10,5 @@ Below is some q/a I met while doing this project:
 4. What is use of Curly Braces in ES6 import statement: https://stackoverflow.com/questions/41337709/what-is-use-of-curly-braces-in-es6-import-statement  
 5. Atom: For selecting one at a time: ⌘ + D, For selecting all occurrence at once: ⌘ + CTRL + G  
 6. npm install body-parser: receive post data.
+7. npm install cookie-parser: Parse Cookie header and populate req.cookies with an object keyed by the cookie names.  
+8. npm install utility: Password md5 hash
