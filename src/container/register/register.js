@@ -70,12 +70,12 @@ class Register extends React.Component {
           </InputItem>
           <WhiteSpace />
           <RadioItem
-            checked={this.state.type=='genius'}
+            checked={this.state.type==='genius'}
             onChange = {()=>this.handleChange('type','genius')}>
             Talent
           </RadioItem>
           <RadioItem
-            checked={this.state.type=='boss'}
+            checked={this.state.type==='boss'}
             onChange = {()=>this.handleChange('type','boss')}>
             Recruiter
           </RadioItem>

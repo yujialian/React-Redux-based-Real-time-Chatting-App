@@ -7,15 +7,12 @@ import {
 const initState = {
   redirectTo: '',
   msg: '',
-  isAuth: false,
   user: '',
   type: ''
 }
-const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const LOAD_DATA = 'LOAD_DATA'
-
+const AUTH_SUCCESS = 'AUTH_SUCCESS'
 export function login({
   user,
   pwd
@@ -29,28 +26,33 @@ export function login({
         pwd
       })
       .then(res => {
-        if (res.status == 200 && res.data.code == 0) {
-          dispatch(loginSuccess(res.data.data)) //Data field pass by back-end
+        if (res.status === 200 && res.data.code === 0) {
+          dispatch(authSuccess(res.data.data)) //Data field pass by back-end
         } else {
           dispatch(errorMsg(res.data.msg))
         }
       })
   }
 }
+export function update(data) {
+  return dispatch=>{
+    axios.post('/user/update',data)//Send /update to user.js to find the router.
+    .then(res=>{
+      if(res.status===200&&res.data.code===0) {
+        console.log('res:',res)
+        dispatch(authSuccess(res.data.data))
+      } else {
+        dispatch(errorMsg(res.data.msg))
+      }
+    })
+  }
+}
 export function user(state = initState, action) {
   switch (action.type) {
-    case REGISTER_SUCCESS:
+    case AUTH_SUCCESS:
       return { ...state,
         msg: '',
         redirectTo: getRedirectPath(action.payload),
-        isAuth: true,
-        ...action.payload
-      }
-    case LOGIN_SUCCESS:
-      return { ...state,
-        msg: '',
-        redirectTo: getRedirectPath(action.payload),
-        isAuth: true,
         ...action.payload
       }
     case LOAD_DATA:
@@ -58,7 +60,6 @@ export function user(state = initState, action) {
     case ERROR_MSG:
       return { ...state,
         msg: action.msg,
-        isAuth: false
       }
     default:
       return state
@@ -77,19 +78,14 @@ export function loadData(userinfo) {
   return { type:LOAD_DATA, payload:userinfo }
 }
 
-function registerSuccess(data) {
+function authSuccess(obj) {
+  const {pwd,...data} = obj //Get ride of pwd.
   return {
-    type: REGISTER_SUCCESS,
-    payload: data
+    type:AUTH_SUCCESS,
+    payload:data
   }
 }
 
-function loginSuccess(data) {
-  return {
-    type: LOGIN_SUCCESS,
-    payload: data
-  }
-}
 export function register({
   user,
   pwd,
@@ -99,7 +95,7 @@ export function register({
   if (!user || !pwd || !type) {
     return errorMsg('You must fill out username, password and account type!')
   }
-  if (pwd != repeatpwd) {
+  if (pwd !== repeatpwd) {
     return errorMsg("Password and confirm password not match!")
   }
   //asynchronously,return a function with dispatch as parameter
@@ -110,8 +106,8 @@ export function register({
         type
       })
       .then(res => {
-        if (res.status == 200 && res.data.code == 0) {
-          dispatch(registerSuccess({
+        if (res.status === 200 && res.data.code === 0) {
+          dispatch(authSuccess({
             user,
             pwd,
             type

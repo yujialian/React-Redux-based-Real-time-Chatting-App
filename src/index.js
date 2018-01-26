@@ -6,6 +6,8 @@ import reducers from './reducer'//合并两个模块
 import Login from './container/login/login'
 import AuthRoute from './component/auth_route/auth_route'
 import Register from './container/register/register'
+import BossInfo from './container/bossinfo/bossinfo'
+import TalentInfo from './container/talentinfo/talentinfo'
 import './config'//Execute config.js
 import './index.css'
 import {
@@ -39,9 +41,13 @@ ReactDom.render(
 			{/*only render the very first route*/}
       <div>
         <AuthRoute></AuthRoute>
-        <Route path='/boss' component={Boss}></Route>
-        <Route path='/login' component={Login}></Route>
-        <Route path='/register' component={Register}></Route>
+        <Switch>
+          <Route path='/bossinfo' component={BossInfo}></Route>
+          <Route path='/talentinfo' component={TalentInfo}></Route>
+          <Route path='/boss' component={Boss}></Route>
+          <Route path='/login' component={Login}></Route>
+          <Route path='/register' component={Register}></Route>
+        </Switch>
       </div>
 
 		</BrowserRouter>
