@@ -15,7 +15,7 @@ const models = {
     'title':{'type':String},
     //If boss, there are 2 additional fields
     'company':{'type':String},
-    'salary':{'type':String}
+    'money':{'type':String}
   },
   chat: {
 

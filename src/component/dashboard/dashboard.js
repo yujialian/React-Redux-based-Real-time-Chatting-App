@@ -4,9 +4,7 @@ import {NavBar} from 'antd-mobile'
 import {Switch, Route} from 'react-router-dom'
 import NavLinkBar from '../navlink/navlink'
 import Boss from '../../component/boss/boss'
-function Talent() {
-  return <h2>Talent main page.</h2>
-}
+import Talent from '../../component/genius/genius'
 function Msg() {
   return <h2>Message List page.</h2>
 }
