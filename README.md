@@ -49,15 +49,15 @@ function wrapperHello(Comp) {
   Second style of writing:
   
   function wrapperHello(Comp) {
-  class WrapComp extends React.Component {
-    render() {
-      return (
-        <div>
-          <p>This is Higher Order Component</p>
-          <Comp {...this.props}></Comp>
-        </div>)
+    class WrapComp extends React.Component {
+      render() {
+        return (
+          <div>
+            <p>This is Higher Order Component</p>
+            <Comp {...this.props}></Comp>
+          </div>)
+        }
       }
-    }
     return WrapComp
   }
   
@@ -71,5 +71,25 @@ function wrapperHello(Comp) {
   ```
   There are 2 use of Higher Order Component:  
 &nbsp;&nbsp;1.Props Proxy:The HOC manipulates the props being passed to the WrappedComponent(As the demo shows)  
-&nbsp;&nbsp;2.Inheritance Inversion: The HOC extends the WrappedComponent
-        
+&nbsp;&nbsp;2.Inheritance Inversion: The HOC extends the WrappedComponent, reusable code, hold render. Example is below:
+```
+function WrapperHello(Comp) {
+  class WrapComp extends Comp {
+    componentDidMount() {
+      console.log('New add higher order life cycle been loaded')
+      }
+    render() {
+      return <Comp></Comp>
+      }
+    }
+    return WrapComp
+  }
+  @wrapperHello
+  class hello extends React.Component {
+    render() {
+      return <h2>hello react!</h2>
+      }
+    }
+    ```
+  
+        
