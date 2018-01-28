@@ -6,13 +6,33 @@ import {
   Result,
   Icon,
   WhiteSpace,
-  List
+  List,
+  Modal
 } from 'antd-mobile';
+import browserCoolie from 'browser-cookies'
+import {logoutSubmit} from '../../redux/user.redux'
+import {Redirect} from 'react-router-dom'
 @connect(
-  state => state.user
+  state => state.user,
+  {logoutSubmit}
 )
 class User extends React.Component {
+  constructor(props) {
+    super(props)
+    this.logout = this.logout.bind(this)
+  }
+  logout() {
+    const alert = Modal.alert
+    alert('Logout Talent Hunter', 'Are you sure?', [
+  { text: 'Cancel', onPress: () => console.log('cancel') },
+  { text: 'Ok', onPress: () => {
+    browserCoolie.erase('userid')
+    this.props.logoutSubmit()
+  } },])
+
+  }
   render() {
+    console.log(this.props)
     return this.props.user ? (
       <div>
           <Result
@@ -32,10 +52,10 @@ class User extends React.Component {
         </List>
         <WhiteSpace></WhiteSpace>
         <List>
-          <List.Item>Logout</List.Item>
+          <List.Item onClick={this.logout}>Logout</List.Item>
         </List>
       </div>
-    ) : null
+    ) : <Redirect to={this.props.redirectTo}/>
 
   }
 }

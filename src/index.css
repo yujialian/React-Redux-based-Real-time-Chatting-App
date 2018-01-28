@@ -15,3 +15,6 @@ fixed-header.am-navbar {
 .page-content{
   padding:45px 5px;
 }
+.am-tab-bar{
+  z-index: -1;
+}
