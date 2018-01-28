@@ -5,11 +5,9 @@ import {Switch, Route} from 'react-router-dom'
 import NavLinkBar from '../navlink/navlink'
 import Boss from '../../component/boss/boss'
 import Talent from '../../component/genius/genius'
+import User from '../../component/user/user'
 function Msg() {
   return <h2>Message List page.</h2>
-}
-function User() {
-  return <h2>User List page.</h2>
 }
 @connect(
   state=>state
