@@ -69,7 +69,7 @@ function wrapperHello(Comp) {
   }
   Give a component, return second component, and the second component cooperate the first component.
   ```
-  There are 2 use of Higher Order Component:
-      1.Props Proxy:The HOC manipulates the props being passed to the WrappedComponent(As the demo shows)  
-      2.Inheritance Inversion: The HOC extends the WrappedComponent
+  There are 2 use of Higher Order Component:  
+&nbsp;&nbsp;1.Props Proxy:The HOC manipulates the props being passed to the WrappedComponent(As the demo shows)  
+&nbsp;&nbsp;2.Inheritance Inversion: The HOC extends the WrappedComponent
         
