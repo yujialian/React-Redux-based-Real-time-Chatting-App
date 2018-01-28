@@ -12,8 +12,8 @@ Below is some Q/A I met while doing this project:
 6. npm install body-parser: receive post data.
 7. npm install cookie-parser: Parse Cookie header and populate req.cookies with an object keyed by the cookie names.  
 8. npm install utility: Password md5 hash  
-9. npm install browser-cookies: Clear user information in cookie when logout.
-10: I find out logout button not working, the problem is in .am-tab-bar element, it has higher stack order compare to the logout button, so I set css z-index to -1:
+9. npm install browser-cookies: Clear user information in cookie when logout.  
+10. I find out logout button not working, the problem is in .am-tab-bar element, it has higher stack order compare to the logout button, so I set css z-index to -1:
 ```
 .am-tab-bar{
   z-index: -1;
