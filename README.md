@@ -22,7 +22,7 @@ Below is some Q/A I met and react learning notes:
 to put the am-tab-bar element in the buttom.  
 
 All the components in react essentially a function.React: Functional programming  
-https://www.jianshu.com/p/0aae7d4d9bc1
+https://www.jianshu.com/p/0aae7d4d9bc1  
 Higher Order Component Demo function:
 ```
 First style of writing:
