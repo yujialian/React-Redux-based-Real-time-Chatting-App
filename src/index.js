@@ -2,15 +2,17 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import thunk from 'redux-thunk'
-import reducers from './reducer'//合并两个模块
+import reducers from './reducer'//Combine reducers modules into one reducer
 import Login from './container/login/login'
 import AuthRoute from './component/auth_route/auth_route'
 import Register from './container/register/register'
 import BossInfo from './container/bossinfo/bossinfo'
 import TalentInfo from './container/talentinfo/talentinfo'
 import DashBoard from './component/dashboard/dashboard'
+import Chat from './component/chat/chat'
 import './config'//Execute config.js
 import './index.css'
+
 import {
   Provider
 } from 'react-redux'
@@ -46,6 +48,7 @@ ReactDom.render(
           <Route path='/talentinfo' component={TalentInfo}></Route>
           <Route path='/login' component={Login}></Route>
           <Route path='/register' component={Register}></Route>
+          <Route path='/chat/:user' component={Chat}></Route>
           <Route component={DashBoard}></Route>
         </Switch>
       </div>

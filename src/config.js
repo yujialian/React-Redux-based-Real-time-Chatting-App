@@ -3,13 +3,13 @@ import {
   Toast
 } from 'antd-mobile'
 
-//拦截请求
+//Block request
 axios.interceptors.request.use(function(config) {
   Toast.loading('Loading...', 0)
   return config
 })
 
-//拦截响应
+//Block response
 axios.interceptors.response.use(function(config) {
   Toast.hide()
   return config
