@@ -1,9 +1,13 @@
 const express = require('express')
 const Router = express.Router()
 const models = require('./model')
-const User = models.getModel('user')
 const utils = require('utility')
+const User = models.getModel('user')
+const Chat = models.getModel('chat')
 const _filter = {'pwd':0,'__v':0}//Set password and doc version to 0 for security.
+// Chat.remove({}, function(err,doc) {
+//
+// })
 Router.get('/list',function(req, res) {
   const {type} = req.query/*Post parameter use body to obtain, get parameter use query to obtain.*/
   //User.remove({}, function(err,doc){})
@@ -25,6 +29,15 @@ Router.post('/update', function(req, res) {
     return res.json({code:0,data})
   })
 
+})
+Router.get('/getmsglist', function(req, res) {
+  const user = req.cookies.user
+  //{'$or':[{from:user, to:user}]}
+  Chat.find({}, function(err,doc) {//$or:check multiple conditions.
+    if(!err) {
+      return res.json({code:0, msgs:doc})
+    }
+  })
 })
 Router.post('/login', function(req, res) {
   const {user, pwd} = req.body

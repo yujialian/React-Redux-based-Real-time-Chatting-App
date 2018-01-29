@@ -18,6 +18,12 @@ const models = {
     'money':{'type':String}
   },
   chat: {
+    'chatid':{'type':String},
+    'from':{'type':String, 'require':true},
+    'read':{'type':Boolean, 'default': false},/*Only work for reciver side, since sender already know it*/
+    'to':{'type':String, 'require':true},
+    'content':{'type':String, 'require':true, 'default':''},
+    'create_time':{'type':Number, 'default':new Date().getTime()}
 
   }
 }
