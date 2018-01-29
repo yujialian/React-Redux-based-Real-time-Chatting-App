@@ -14,8 +14,8 @@ class Chat extends React.Component {
     this.state = {text:'',msg:[]}
   }
   componentDidMount() {
-    this.props.getMsgList(),
-    this.props.recvMsg()//Once get into the app, recvMsg starts.
+    // this.props.getMsgList(),
+    // this.props.recvMsg()//Once get into the app, recvMsg starts.
   }
   handleSubmit() {
     //socket.emit('sendmsg', {text:this.state.text})
