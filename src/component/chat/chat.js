@@ -49,12 +49,6 @@ class Chat extends React.Component {
     },0)
   }
   handleSubmit() {
-    //socket.emit('sendmsg', {text:this.state.text})
-    //this.setState({text:''})
-    // this.props.user ? (const from = this.props.user._id) :
-    // userid = req.cookies.userid
-    // this.props.user = this.props.users.filter(v => v.userif == chatid)
-    //console.log(this.props.user)
     const from = this.props.user._id
     const to = this.props.match.params.user //In the url
     const msg = this.state.text
@@ -73,9 +67,6 @@ class Chat extends React.Component {
                 .split(' ')
                 .filter(v=>v)
                 .map(v=>({text:v}))
-
-
-
     const userid = this.props.match.params.user
     const Item = List.Item
     const users = this.props.chat.users
