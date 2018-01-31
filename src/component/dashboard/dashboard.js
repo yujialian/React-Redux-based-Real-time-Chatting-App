@@ -7,10 +7,8 @@ import Boss from '../../component/boss/boss'
 import Talent from '../../component/genius/genius'
 import User from '../../component/user/user'
 import {getMsgList, recvMsg} from '../../redux/chat.redux'
+import Msg from '../../component/message/message'
 
-function Msg() {
-  return <h2>Message List page.</h2>
-}
 @connect(
   state=>state,
   {getMsgList, recvMsg}
