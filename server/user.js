@@ -11,6 +11,7 @@ const _filter = {'pwd':0,'__v':0}//Set password and doc version to 0 for securit
 Router.get('/list',function(req, res) {
   const {type} = req.query/*Post parameter use body to obtain, get parameter use query to obtain.*/
   //User.remove({}, function(err,doc){})
+  //Chat.remove({},function(err,doc){})
   User.find({type}, function(err, doc) {
     return res.json({code:0,data:doc})
   })
@@ -28,17 +29,27 @@ Router.post('/update', function(req, res) {
     }, body)
     return res.json({code:0,data})
   })
-
 })
+
+
 Router.get('/getmsglist', function(req, res) {
-  const user = req.cookies.user
-  //{'$or':[{from:user, to:user}]}
-  Chat.find({}, function(err,doc) {//$or:check multiple conditions.
-    if(!err) {
-      return res.json({code:0, msgs:doc})
-    }
+  const user = req.cookies.userid
+
+  User.find({},function(err,userdoc) {
+    let users = {}
+    userdoc.forEach(v=>{
+      users[v._id] = {name:v.user, avatar:v.avatar}
+    })
+    //Find send in and send out message.
+    Chat.find({'$or':[{from:user}, {to:user}]}, function(err,doc) {//$or:check multiple conditions.
+      if(!err) {
+        return res.json({code:0, msgs:doc, users:users})
+      }
+    })
   })
 })
+
+
 Router.post('/login', function(req, res) {
   const {user, pwd} = req.body
   User.findOne({user,pwd:md5Pwd(pwd)}, _filter, function(err, doc) {
@@ -65,12 +76,6 @@ Router.post('/register', function(req, res) {
       res.cookie('userid',_id)
       return res.json({code:0,data: {user, type, _id}})
     })
-    // User.create({user,pwd:md5Pwd(pwd),type}, function(err,doc) {
-    //   if(err) {
-    //     return res.json({code:1, msg:'Back-end err!'})
-    //   }
-    //   return res.json({code:0})
-    // })
   })
 })
 Router.get('/info',function(req, res) {

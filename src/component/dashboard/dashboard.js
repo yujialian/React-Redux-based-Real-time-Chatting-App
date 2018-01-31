@@ -17,8 +17,10 @@ function Msg() {
 )
 class DashBoard extends React.Component {
   componentDidMount() {
-    this.props.getMsgList(),
-    this.props.recvMsg()//Once get into the app, recvMsg starts.
+    if(!this.props.chat.chatmsg.length) {
+      this.props.getMsgList(),
+      this.props.recvMsg()//Once get into the app, recvMsg starts.
+    }
   }
   render() {
     //console.log(this.props)

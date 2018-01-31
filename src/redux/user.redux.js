@@ -43,7 +43,6 @@ export function update(data) {
     axios.post('/user/update',data)//Send /update to user.js to find the router.
     .then(res=>{
       if(res.status===200&&res.data.code===0) {
-        console.log('res:',res)
         dispatch(authSuccess(res.data.data))
       } else {
         dispatch(errorMsg(res.data.msg))

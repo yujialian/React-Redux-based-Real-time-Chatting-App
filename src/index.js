@@ -44,7 +44,6 @@ ReactDom.render(
         <Switch>
           /*Switch means once one route satisfied, the below router will be ignored.*/
           <Route path='/bossinfo' component={BossInfo}></Route>
-          {/*<Route path='/boss' component={Boss}></Route>*/}
           <Route path='/talentinfo' component={TalentInfo}></Route>
           <Route path='/login' component={Login}></Route>
           <Route path='/register' component={Register}></Route>

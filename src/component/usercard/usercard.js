@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Card,WhiteSpace, WingBlank} from 'antd-mobile'
 import {withRouter} from 'react-router-dom'
-
 @withRouter
 class UserCard extends React.Component {
   static propTypes = {
@@ -34,7 +33,6 @@ class UserCard extends React.Component {
               ))}
               {v.type==='boss'?<div>Compensation: {v.money}</div>:null}
             </Card.Body>
-
           </Card>
         ):null
         ))}

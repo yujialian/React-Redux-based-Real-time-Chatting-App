@@ -13,7 +13,6 @@ class Boss extends React.Component {
     this.props.getUserList('genius')
   }
   render() {
-    //console.log(this.state)
     return (
       <UserCard userList={this.props.userList}></UserCard>
     )
