@@ -71,7 +71,7 @@ class DashBoard extends React.Component {
     //in order to have animation effect, only render 1 router, decide component based on current path.
     return (
       <div>
-        <NavBar className='fixed-header' mode='dark'>{navList.find(v=>v.path===pathname).title}</NavBar>
+        <NavBar className='fixed-header' mode='dard'>{page.title}</NavBar>
         <div style={{marginTop:45}}>
           <QueueAnim type='scaleX' duration={1500}>
             <Route key={page.path} path={page.path} component={page.component}></Route>

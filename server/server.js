@@ -4,6 +4,7 @@ const utils = require('utility')
 const models = require('./model')
 const Chat = models.getModel('chat')
 const cookieParser = require('cookie-parser')
+const path = require('path')
 const app = express()
 const server = require('http').Server(app)//First using http module emcorporate express server
 const io = require('socket.io')(server)//then pass the above serve
@@ -19,11 +20,23 @@ io.on('connection',function(socket) {/*Socket is current connection request. io 
 })
 
 const userRouter = require('./user')
+
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use('/user',userRouter)//Enable middleware, anything relate to user prefix, child router is defined in
 //user router.
 //Work with express: Need to accordance the socket.io and http's interface
+app.use(function(req, res, next) {
+	if(req.url.startsWith('/user/')||req.url.startsWith('/static/')) {
+		return next()
+	}
+	console.log("path.resolve: ",path.resolve('build/index.html'))
+	return res.sendFile(path.resolve('build/index.html'))//Path.resolve: Correct path, translate relative path into absolute path.
+})
+/*If url start with user, return next, app.use('/user',userRouter).
+Otherwise render the index.html file, all the routing happens in the front end, the back end only needs
+to do intercept if needed.*/
+app.use('/',express.static(path.resolve('build')))
 server.listen(9093,function() {
 	console.log('Node app start at port 9093')
 })
