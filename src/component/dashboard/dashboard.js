@@ -8,7 +8,7 @@ import Talent from '../../component/genius/genius'
 import User from '../../component/user/user'
 import {getMsgList, recvMsg} from '../../redux/chat.redux'
 import Msg from '../../component/message/message'
-
+import QueueAnim from 'rc-queue-anim'
 @connect(
   state=>state,
   {getMsgList, recvMsg}
@@ -57,15 +57,15 @@ class DashBoard extends React.Component {
         component:User, //The component that need to be rendered.
       }
     ]
+    const page = navList.find(v=>v.path==pathname)
+    //in order to have animation effect, only render 1 router, decide component based on current path.
     return (
       <div>
         <NavBar className='fixed-header' mode='dark'>{navList.find(v=>v.path===pathname).title}</NavBar>
         <div style={{marginTop:45}}>
-          <Switch>{/*Only hit one.*/}
-            {navList.map(v=>(
-              <Route key={v.path} path={v.path} component={v.component}></Route>
-            ))}
-          </Switch>
+          <QueueAnim type='scaleX' duration={1500}>
+            <Route key={page.path} path={page.path} component={page.component}></Route>
+          </QueueAnim>
         </div>
         <NavLinkBar data={navList}></NavLinkBar>
       </div>

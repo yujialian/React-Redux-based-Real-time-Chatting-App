@@ -49,7 +49,6 @@ Router.post('/update', function(req, res) {
   })
 })
 
-
 Router.get('/getmsglist', function(req, res) {
   const user = req.cookies.userid
 
@@ -67,7 +66,6 @@ Router.get('/getmsglist', function(req, res) {
   })
 })
 
-
 Router.post('/login', function(req, res) {
   const {user, pwd} = req.body
   User.findOne({user,pwd:md5Pwd(pwd)}, _filter, function(err, doc) {
@@ -78,6 +76,7 @@ Router.post('/login', function(req, res) {
     return res.json({code:0, data:doc})
   })
 })
+
 Router.post('/register', function(req, res) {
   console.log("req body is:", req.body)
   const {user, pwd, type} = req.body
