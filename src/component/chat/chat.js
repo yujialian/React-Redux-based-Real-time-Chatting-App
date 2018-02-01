@@ -6,7 +6,6 @@ import {
   Icon,
   Grid
 } from 'antd-mobile'
-import io from 'socket.io-client'
 import {
   connect
 } from 'react-redux'
@@ -20,7 +19,7 @@ import {
 import {
   getChatId
 } from '../../util'
-const socket = io('ws://localhost:9093') //Connect client with backend Websocket
+//const socket = io('ws://localhost:9093') //Connect client with backend Websocket
 
 @connect(
   state => state,
@@ -82,7 +81,7 @@ class Chat extends React.Component {
       return null
     }
     const chatid = getChatId(userid, this.props.user._id)
-    const chatmsgs = this.props.chat.chatmsg.filter(v => v.chatid == chatid)
+    const chatmsgs = this.props.chat.chatmsg.filter(v => v.chatid === chatid)
     return (
       <div id="chat-page">
         <NavBar
@@ -97,7 +96,7 @@ class Chat extends React.Component {
           {
             chatmsgs.map(v=>{
             const avatar = users[v.from]?require(`../img/${users[v.from].avatar}.png`):''
-            return v.from==userid?(
+            return v.from===userid?(
               <List key={v._id}>
                 <Item
                   thumb={avatar}>
@@ -107,7 +106,7 @@ class Chat extends React.Component {
             ):(
               <List key={v._id}>
                 <Item
-                  extra={<img src={avatar} />}
+                  extra={<img alt='' src={avatar} />}
                   className='chat-me'>
                   {v.content}
                 </Item>
@@ -127,6 +126,8 @@ class Chat extends React.Component {
             extra={
               <div>
                 <span
+                  role="img"
+                  aria-label="smile"
                   onClick={()=>{
                     this.setState({showEmoji:!this.state.showEmoji
                     })

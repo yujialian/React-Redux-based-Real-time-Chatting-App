@@ -1,63 +1,73 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {NavBar} from 'antd-mobile'
-import {Switch, Route} from 'react-router-dom'
+import {
+  connect
+} from 'react-redux'
+import {
+  NavBar
+} from 'antd-mobile'
+import {
+  Route
+} from 'react-router-dom'
 import NavLinkBar from '../navlink/navlink'
 import Boss from '../../component/boss/boss'
 import Talent from '../../component/genius/genius'
 import User from '../../component/user/user'
-import {getMsgList, recvMsg} from '../../redux/chat.redux'
+import {
+  getMsgList,
+  recvMsg
+} from '../../redux/chat.redux'
 import Msg from '../../component/message/message'
 import QueueAnim from 'rc-queue-anim'
 @connect(
-  state=>state,
-  {getMsgList, recvMsg}
+  state => state, {
+    getMsgList,
+    recvMsg
+  }
 )
 class DashBoard extends React.Component {
   componentDidMount() {
-    if(!this.props.chat.chatmsg.length) {
-      this.props.getMsgList(),
-      console.log("in dashboard.js:  ",this.props.chat.chatmsg.length)
-      this.props.recvMsg()//Once get into the app, recvMsg starts.
+    if (!this.props.chat.chatmsg.length) {
+      this.props.getMsgList()
+      this.props.recvMsg() //Once get into the app, recvMsg starts.
     }
   }
   render() {
-    //console.log(this.props)
-    const {pathname} = this.props.location
+    const {
+      pathname
+    } = this.props.location
     const user = this.props.user //Get from redux
-    const navList = [
-      {
-        path:'/boss',
-        text:'Recruter',
-        icon:'boss',
-        title:'Talent List',
-        component:Boss, //The component that need to be rendered.
-        hide:user.type==="genius"
+    const navList = [{
+        path: '/boss',
+        text: 'Recruter',
+        icon: 'boss',
+        title: 'Talent List',
+        component: Boss, //The component that need to be rendered.
+        hide: user.type === "genius"
       },
       {
-        path:'/talent',
-        text:'Talent',
-        icon:'job',
-        title:'Boss List',
-        component:Talent, //The component that need to be rendered.
-        hide:user.type==='boss'
+        path: '/talent',
+        text: 'Talent',
+        icon: 'job',
+        title: 'Boss List',
+        component: Talent, //The component that need to be rendered.
+        hide: user.type === 'boss'
       },
       {
-        path:'/msg',
-        text:'Message',
-        icon:'msg',
-        title:'Message List',
-        component:Msg, //The component that need to be rendered.
+        path: '/msg',
+        text: 'Message',
+        icon: 'msg',
+        title: 'Message List',
+        component: Msg, //The component that need to be rendered.
       },
       {
-        path:'/me',
-        text:'Me',
-        icon:'user',
-        title:'User center',
-        component:User, //The component that need to be rendered.
+        path: '/me',
+        text: 'Me',
+        icon: 'user',
+        title: 'User center',
+        component: User, //The component that need to be rendered.
       }
     ]
-    const page = navList.find(v=>v.path==pathname)
+    const page = navList.find(v => v.path === pathname)
     //in order to have animation effect, only render 1 router, decide component based on current path.
     return (
       <div>

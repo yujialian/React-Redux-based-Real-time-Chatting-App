@@ -4,7 +4,6 @@ import {
 } from 'react-redux'
 import {
   Result,
-  Icon,
   WhiteSpace,
   List,
   Modal
@@ -38,7 +37,7 @@ class User extends React.Component {
           <Result
             img={<img src={require(`../img/${this.props.avatar}.png`)} style={{"width":"50px"}} alt="" />}
             title={this.props.user}
-            message={this.props.type=='boss'?this.props.company:null}
+            message={this.props.type==='boss'?this.props.company:null}
            />
 
         <List renderHeader={()=>'Introduction'}>

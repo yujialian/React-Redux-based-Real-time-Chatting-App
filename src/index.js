@@ -19,8 +19,6 @@ import {
 import {
   BrowserRouter,
   Route,
-  Link,
-  Redirect,
   Switch
 } from 'react-router-dom'
 import {
@@ -42,7 +40,7 @@ ReactDom.render(
       <div>
         <AuthRoute></AuthRoute>
         <Switch>
-          /*Switch means once one route satisfied, the below router will be ignored.*/
+          {/*Switch means once one route satisfied, the below router will be ignored.*/}
           <Route path='/bossinfo' component={BossInfo}></Route>
           <Route path='/talentinfo' component={TalentInfo}></Route>
           <Route path='/login' component={Login}></Route>

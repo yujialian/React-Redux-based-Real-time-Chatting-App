@@ -19,7 +19,7 @@ class UserCard extends React.Component {
           <Card
             style={{zIndex:1}}
             onClick={()=>this.handleClick(v)}
-            key={v.id}>
+            key={v._id}>
             {/*Header: Avatar and job title. Body:User introduction.*/}
             <Card.Header
               title={v.user}
