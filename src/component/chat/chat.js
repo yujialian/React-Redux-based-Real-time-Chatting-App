@@ -14,6 +14,7 @@ import {
   getMsgList,
   sendMsg,
   recvMsg,
+  readMsg
 } from '../../redux/chat.redux'
 import {
   getChatId
@@ -26,6 +27,7 @@ const socket = io('ws://localhost:9093') //Connect client with backend Websocket
     getMsgList,
     sendMsg,
     recvMsg,
+    readMsg
   }
 )
 class Chat extends React.Component {
@@ -39,9 +41,14 @@ class Chat extends React.Component {
   componentDidMount() {
     if (!this.props.chat.chatmsg.length) {
       this.props.getMsgList()
+      //console.log("in chat.js:  ",this.props.chat.chatmsg.length)
       this.props.recvMsg() //Once get into the app, recvMsg starts.
     }
 
+  }
+  componentWillUnmount() {
+    const to = this.props.match.params.user//Get chater's url info
+    this.props.readMsg(to)
   }
   fixCarousel() {
     setTimeout(function() {

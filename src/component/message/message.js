@@ -3,7 +3,8 @@ import {
   connect
 } from 'react-redux'
 import {
-  List
+  List,
+  Badge
 } from 'antd-mobile'
 @connect(
   state => state //Get all the data
@@ -27,7 +28,11 @@ class Msg extends React.Component {
       msgGroup[v.chatid].push(v)
     })
     //console.log(msgGroup)
-    const chatList = Object.values(msgGroup)
+    const chatList = Object.values(msgGroup).sort((a,b)=>{
+      const a_last = this.getLast(a).create_time
+      const b_last = this.getLast(b).create_time
+      return b_last - a_last
+    })
     //Group user by chatid
     return (
       <div>
@@ -35,14 +40,20 @@ class Msg extends React.Component {
               chatList.map(v=>{
                 const lastItem = this.getLast(v)
                 const targetId = v[0].from==userid?v[0].to:v[0].from
+                var unreadNum = v.filter(v=>!v.read&&v.to===userid).length//Unread number: unread and to current login user
                 if(!userinfo[targetId]) {
                   return null
                 }
-                // const name = userinfo[targetId]?userinfo[targetId].name:''
-                // const avatar = userinfo[targetId]?userinfo[targetId].avatar:null
                 return (
                   <List key={lastItem._id}>
                   <Item
+                    arrow="horizontal"
+                    onClick={()=>{
+                      this.props.history.push(`/chat/${targetId}`)
+                      //this.props.chat.unread = this.props.chat.unread-unreadNum
+                      //v.map(e=>e.read=true)
+                    }}
+                    extra={<Badge text={unreadNum}></Badge>}
                     thumb={require(`../img/${userinfo[targetId].avatar}.png`)}
                     >
                   {lastItem.content}

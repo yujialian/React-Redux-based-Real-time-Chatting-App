@@ -17,6 +17,7 @@ class DashBoard extends React.Component {
   componentDidMount() {
     if(!this.props.chat.chatmsg.length) {
       this.props.getMsgList(),
+      console.log("in dashboard.js:  ",this.props.chat.chatmsg.length)
       this.props.recvMsg()//Once get into the app, recvMsg starts.
     }
   }
