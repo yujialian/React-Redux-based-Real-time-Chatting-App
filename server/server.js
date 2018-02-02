@@ -1,13 +1,16 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const utils = require('utility')
-const models = require('./model')
-const Chat = models.getModel('chat')
-const cookieParser = require('cookie-parser')
-const path = require('path')
+import express from 'express'
+import bodyParser from 'body-parser'
+import utils from 'utility'
+import model from './model'
+import cookieParser from 'cookie-parser'
+import path from 'path'
+
+const Chat = model.getModel('chat')
 const app = express()
 const server = require('http').Server(app)//First using http module emcorporate express server
 const io = require('socket.io')(server)//then pass the above serve
+
+
 //Above achieve bind the express with socket.io
 io.on('connection',function(socket) {/*Socket is current connection request. io is global request.*/
 	socket.on('sendmsg', function(data) {
