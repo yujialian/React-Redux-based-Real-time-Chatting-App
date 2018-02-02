@@ -14,7 +14,7 @@
 └── src  Front end JSX code
 ```  
 
-Below is some Q/A I met and react learning notes:
+Below is some Q/A I met, some package/library I used in this project, along with react learning notes:
 
 1. babel-plugin-import: On demand loading when use ant-design.
 2. transform-decorators-legacy: When writing redux, support @ service(decorators).
