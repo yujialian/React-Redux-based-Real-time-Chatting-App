@@ -8,7 +8,8 @@ import staticPath from '../build/asset-manifest.json'
 import csshook from 'css-modules-require-hook/preset' // import hook before routes
 import assethook from 'asset-require-hook'
 assethook({
-	extensions:['png']
+	extensions:['png'],
+	limit: 9000
 })
 
 import React from 'react'
