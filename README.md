@@ -1,6 +1,7 @@
 # talent_hunter
 
 ```
+**Talent Hunter**
 ├── README.md
 ├── build   compile-build-package for the whole project
 ├── cmrh.conf.js   A require hook to compile CSS Modules in runtime
@@ -13,6 +14,31 @@
 ├── server  Back end express/mongodb server
 └── src  Front end JSX code
 ```  
+
+### 1 Initialization
+
+Preparation:
+Go  mongodb.com download Mongodb
+```
+brew install mongodb
+```
+
+First step：
+```
+git clone https://github.com/yujialian/talent_hunter.git
+```
+Second step：
+```
+npm install
+```
+Thrid step：
+```
+mongod (It handles data requests, manages data access, and performs background management operations.)
+```
+Fourth step:
+```
+npm run server
+```
 
 Below is some Q/A I met, some package/library I used in this project, along with react learning notes:
 
