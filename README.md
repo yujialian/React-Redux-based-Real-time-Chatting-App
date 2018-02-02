@@ -1,5 +1,18 @@
 # talent_hunter
 
+```
+├── README.md
+├── build   compile-build-package for the whole project
+├── cmrh.conf.js   A require hook to compile CSS Modules in runtime
+├── config   webpack config package
+├── node_modules   Project Dependencies
+├── package-lock.json  
+├── package.json   records of package version
+├── public
+├── scripts  
+├── server  Back end express/mongodb server
+└── src  Front end JSX code
+```  
 
 Below is some Q/A I met and react learning notes:
 
