@@ -6,7 +6,8 @@ import {
   NavBar
 } from 'antd-mobile'
 import {
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom'
 import NavLinkBar from '../navlink/navlink'
 import Boss from '../../component/boss/boss'
@@ -69,7 +70,7 @@ class DashBoard extends React.Component {
     ]
     const page = navList.find(v => v.path === pathname)
     //in order to have animation effect, only render 1 router, decide component based on current path.
-    return (
+    return page?(
       <div>
         <NavBar className='fixed-header' mode='dard'>{page.title}</NavBar>
         <div style={{marginTop:45}}>
@@ -79,7 +80,7 @@ class DashBoard extends React.Component {
         </div>
         <NavLinkBar data={navList}></NavLinkBar>
       </div>
-    )
+    ):<Redirect to='/msg'></Redirect>
   }
 }
 

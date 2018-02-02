@@ -3,13 +3,7 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import thunk from 'redux-thunk'
 import reducers from './reducer'//Combine reducers modules into one reducer
-import Login from './container/login/login'
-import AuthRoute from './component/auth_route/auth_route'
-import Register from './container/register/register'
-import BossInfo from './container/bossinfo/bossinfo'
-import TalentInfo from './container/talentinfo/talentinfo'
-import DashBoard from './component/dashboard/dashboard'
-import Chat from './component/chat/chat'
+import App from './app'
 import './config'//Execute config.js
 import './index.css'
 
@@ -17,9 +11,7 @@ import {
   Provider
 } from 'react-redux'
 import {
-  BrowserRouter,
-  Route,
-  Switch
+  BrowserRouter
 } from 'react-router-dom'
 import {
   createStore,
@@ -33,23 +25,10 @@ const store = createStore(reducers, compose(
 ))
 
 /* Sub-page: boss, talent, me, msg. Totally 4 pages.*/
-ReactDom.render(
+ReactDom.hydrate(
   (<Provider store={store}>
 		<BrowserRouter>
-			{/*only render the very first route*/}
-      <div>
-        <AuthRoute></AuthRoute>
-        <Switch>
-          {/*Switch means once one route satisfied, the below router will be ignored.*/}
-          <Route path='/bossinfo' component={BossInfo}></Route>
-          <Route path='/talentinfo' component={TalentInfo}></Route>
-          <Route path='/login' component={Login}></Route>
-          <Route path='/register' component={Register}></Route>
-          <Route path='/chat/:user' component={Chat}></Route>
-          <Route component={DashBoard}></Route>
-        </Switch>
-      </div>
-
+      <App></App>
 		</BrowserRouter>
 	</Provider>),
   document.getElementById('root')
