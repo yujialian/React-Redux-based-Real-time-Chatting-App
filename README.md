@@ -91,6 +91,4 @@ function WrapperHello(Comp) {
       return <h2>hello react!</h2>
       }
     }
-    ```
-  
-        
+```
