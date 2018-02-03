@@ -15,9 +15,6 @@ class Msg extends React.Component {
   }
 
   render() {
-    if (!this.props.chat.chatmsg.length) {
-      return []
-    }
     const Item = List.Item
     const Brief = Item.Brief
     const userid = this.props.user._id
@@ -49,7 +46,7 @@ class Msg extends React.Component {
                   <Item
                     arrow="horizontal"
                     onClick={()=>{
-                      this.props.history.push(`/chat/${targetId}`)
+                      this.props.history.push(`/user/chat/${targetId}`)
                       //this.props.chat.unread = this.props.chat.unread-unreadNum
                       //v.map(e=>e.read=true)
                     }}

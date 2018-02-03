@@ -5,9 +5,7 @@ const utils = require('utility')
 const User = models.getModel('user')
 const Chat = models.getModel('chat')
 const _filter = {'pwd':0,'__v':0}//Set password and doc version to 0 for security.
-// Chat.remove({}, function(err,doc) {
-//
-// })
+
 Router.get('/list',function(req, res) {
   const {type} = req.query/*Post parameter use body to obtain, get parameter use query to obtain.*/
   //User.remove({}, function(err,doc){})
@@ -16,7 +14,6 @@ Router.get('/list',function(req, res) {
     return res.json({code:0,data:doc})
   })
 })
-
 Router.post('/readmsg',function(req,res) {
   const userid = req.cookies.userid
   const {from} = req.body
@@ -109,8 +106,22 @@ Router.get('/info',function(req, res) {
       return res.json({code:0,data:doc})
     }
   })
-
-
+})
+Router.get('/chat/user/info',function(req, res) {/*return current login info*/
+  const {userid} = req.cookies
+  /*User have cookie or not*/
+  if(!userid) {
+    return res.json({code:1})
+  }
+  User.findOne({_id:userid}, _filter, function(err,doc) {
+    if(err) {
+      return res.json({code:1, msg:'Problems in this request, please re-login.'})
+    }
+    if(doc) {
+      //console.log("doc that been logined::::",doc)
+      return res.json({code:0,data:doc})
+    }
+  })
 })
 function md5Pwd(pwd) {//Encript user's password.
   const salt = 'react_is_cool_asef234g35234far23#!@!#$(%)'

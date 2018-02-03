@@ -41,10 +41,10 @@ class Chat extends React.Component {
   componentDidMount() {
     if (!this.props.chat.chatmsg.length) {
       this.props.getMsgList()
-      //console.log("in chat.js:  ",this.props.chat.chatmsg.length)
-      this.props.recvMsg() //Once get into the app, recvMsg starts.
+      if(this.props.location.pathname.indexOf("/chat")===-1) {
+        this.props.recvMsg() //Once get into the app, recvMsg starts.
+      }
     }
-
   }
   componentWillUnmount() {
     const to = this.props.match.params.user//Get chater's url info
