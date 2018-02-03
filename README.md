@@ -1,7 +1,46 @@
 # talent_hunter
 
+```
+**Talent Hunter**
+├── README.md
+├── build   compile-build-package for the whole project
+├── cmrh.conf.js   A require hook to compile CSS Modules in runtime
+├── config   webpack config package
+├── node_modules   Project Dependencies
+├── package-lock.json  
+├── package.json   records of package version
+├── public
+├── scripts  
+├── server  Back end express/mongodb server
+└── src  Front end JSX code
+```  
 
-Below is some Q/A I met and react learning notes:
+### 1 Initialization
+
+Preparation:
+Go  mongodb.com download Mongodb
+```
+brew install mongodb
+```
+
+First step：
+```
+git clone https://github.com/yujialian/talent_hunter.git
+```
+Second step：
+```
+npm install
+```
+Thrid step：
+```
+mongod (It handles data requests, manages data access, and performs background management operations.)
+```
+Fourth step:
+```
+npm run server
+```
+
+Below is some Q/A I met, some package/library I used in this project, along with react learning notes:
 
 1. babel-plugin-import: On demand loading when use ant-design.
 2. transform-decorators-legacy: When writing redux, support @ service(decorators).
@@ -21,8 +60,12 @@ Below is some Q/A I met and react learning notes:
 ```
 to put the am-tab-bar element in the buttom.  
 
-All the components in react essentially a function.React: Functional programming  
+All the components in react essentially a function.React: Functional programming
+  
+Couple of links helps me:  
 https://www.jianshu.com/p/0aae7d4d9bc1  
+https://cnodejs.org/topic/5865a866189fd5ad6459006c  
+  
 Higher Order Component Demo function:
 ```
 First style of writing:
@@ -91,6 +134,4 @@ function WrapperHello(Comp) {
       return <h2>hello react!</h2>
       }
     }
-    ```
-  
-        
+```
