@@ -59,7 +59,7 @@ Below is some Q/A I met, some package/library I used in this project, along with
 }
 ```
 
-lsof -i:27017: Check which port is running.  
+lsof -i:27017: Check which port is running.  Kill -9 8836  
 to put the am-tab-bar element in the buttom.  
 
 All the components in react essentially a function.React: Functional programming
