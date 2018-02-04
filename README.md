@@ -40,6 +40,21 @@ Fourth step:
 npm run server
 ```
 
+### Whole appcation demo:
+
+# OverView:
+
+![talent_hunter](https://github.com/yujialian/talent_hunter/blob/master/src/component/img/talent_hunter_overview.gif)
+
+# Register:
+
+![talent_hunter](https://github.com/yujialian/talent_hunter/blob/master/src/component/img/talent_hunter_register.gif)
+
+# Chat:
+
+![talent_hunter](https://github.com/yujialian/talent_hunter/blob/master/src/component/img/talent_hunter_chat.gif)
+
+
 Below is some Q/A I met, some package/library I used in this project, along with react learning notes:
 
 1. babel-plugin-import: On demand loading when use ant-design.
