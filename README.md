@@ -66,6 +66,10 @@ npm run server
 
 ![talent_hunter](https://github.com/yujialian/talent_hunter/blob/master/src/component/img/user_list.png)
 
+# Message Page:
+
+![talent_hunter](https://github.com/yujialian/talent_hunter/blob/master/src/component/img/message_center.jpeg)
+
 # Chatting Page:
 
 ![talent_hunter](https://github.com/yujialian/talent_hunter/blob/master/src/component/img/chating_page.png)
