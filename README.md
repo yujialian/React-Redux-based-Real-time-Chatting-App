@@ -54,6 +54,25 @@ npm run server
 
 ![talent_hunter](https://github.com/yujialian/talent_hunter/blob/master/src/component/img/talent_hunter_chat.gif)
 
+# Register Page:
+
+![talent_hunter](https://github.com/yujialian/talent_hunter/blob/master/src/component/img/register.png)
+
+# Information center Page:
+
+![talent_hunter](https://github.com/yujialian/talent_hunter/blob/master/src/component/img/recruter_center.png)
+
+# User Main Page:
+
+![talent_hunter](https://github.com/yujialian/talent_hunter/blob/master/src/component/img/user_list.png)
+
+# Chatting Page:
+
+![talent_hunter](https://github.com/yujialian/talent_hunter/blob/master/src/component/img/chating_page.png)
+
+# User Center Page:
+
+![talent_hunter](https://github.com/yujialian/talent_hunter/blob/master/src/component/img/user_center.png)
 
 Below is some Q/A I met, some package/library I used in this project, along with react learning notes:
 
