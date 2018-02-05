@@ -21,7 +21,6 @@ class AuthRoute extends React.Component {
       return null
     }
     /*Get user info.Return user current information*/
-
     axios.get('user/info')
       .then(res => {
         if (res.status === 200) {

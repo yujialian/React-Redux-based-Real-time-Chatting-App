@@ -37,7 +37,7 @@ class App extends React.Component{
           <Route path='/talentinfo' component={TalentInfo}></Route>
           <Route path='/login' component={Login}></Route>
           <Route path='/register' component={Register}></Route>
-          <Route path='/user/chat/:user' component={Chat}></Route>
+          <Route path='/chat/:user' component={Chat}></Route>
           <Route component={DashBoard}></Route>
         </Switch>
       </div>

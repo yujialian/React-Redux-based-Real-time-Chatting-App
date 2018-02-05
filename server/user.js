@@ -48,7 +48,6 @@ Router.post('/update', function(req, res) {
 
 Router.get('/getmsglist', function(req, res) {
   const user = req.cookies.userid
-
   User.find({},function(err,userdoc) {
     let users = {}
     userdoc.forEach(v=>{
@@ -75,7 +74,6 @@ Router.post('/login', function(req, res) {
 })
 
 Router.post('/register', function(req, res) {
-  console.log("req body is:", req.body)
   const {user, pwd, type} = req.body
   User.findOne({user}, function(err,doc) {//In es6 User.findOne({user:user} can be writen as: findOne({user}
     if(doc) {
@@ -107,22 +105,7 @@ Router.get('/info',function(req, res) {
     }
   })
 })
-Router.get('/chat/user/info',function(req, res) {/*return current login info*/
-  const {userid} = req.cookies
-  /*User have cookie or not*/
-  if(!userid) {
-    return res.json({code:1})
-  }
-  User.findOne({_id:userid}, _filter, function(err,doc) {
-    if(err) {
-      return res.json({code:1, msg:'Problems in this request, please re-login.'})
-    }
-    if(doc) {
-      //console.log("doc that been logined::::",doc)
-      return res.json({code:0,data:doc})
-    }
-  })
-})
+
 function md5Pwd(pwd) {//Encript user's password.
   const salt = 'react_is_cool_asef234g35234far23#!@!#$(%)'
   return utils.md5(utils.md5(pwd+salt))

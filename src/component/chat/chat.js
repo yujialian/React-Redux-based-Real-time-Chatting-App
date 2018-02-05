@@ -38,14 +38,15 @@ class Chat extends React.Component {
       msg: []
     }
   }
-  componentDidMount() {
-    if (!this.props.chat.chatmsg.length) {
-      this.props.getMsgList()
-      if(this.props.location.pathname.indexOf("/chat")===-1) {
-        this.props.recvMsg() //Once get into the app, recvMsg starts.
-      }
-    }
-  }
+  // componentDidMount() {
+  //   if (!this.props.chat.chatmsg.length) {
+  //     this.props.getMsgList()
+  //     // console.log("props in chat js::",this.props)
+  //     // if(this.props.location.pathname.indexOf("/chat")!==-1) {
+  //     //   this.props.recvMsg() //Once get into the app, recvMsg starts.
+  //     }
+  //   }
+  //}
   componentWillUnmount() {
     const to = this.props.match.params.user//Get chater's url info
     this.props.readMsg(to)
@@ -66,7 +67,8 @@ class Chat extends React.Component {
     })
     this.setState({
       text: '',
-      showEmoji:false
+      showEmoji:false,
+      //msg:[]
     })
   }
   render() {

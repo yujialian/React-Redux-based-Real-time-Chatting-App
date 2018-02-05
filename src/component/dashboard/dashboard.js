@@ -30,9 +30,11 @@ class DashBoard extends React.Component {
     //console.log(this.props.location.pathname)
     if (!this.props.chat.chatmsg.length) {
       this.props.getMsgList()
-      if(this.props.location.pathname.indexOf("/chat") === -1) {
-        this.props.recvMsg() //Once get into the app, recvMsg starts.
-      }
+      //console.log("this.props in dashboard: ", this.props)
+      //console.log("this.props.location.pathname.indexOf(/chat):",this.props.location.pathname.indexOf("/chat"))
+      //if(this.props.location.pathname.indexOf("/chat") === -1) {
+      this.props.recvMsg() //Once get into the app, recvMsg starts.
+      //}
       }
     }
   render() {
