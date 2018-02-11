@@ -40,7 +40,7 @@ Fourth step:
 npm run server
 ```
 
-### Whole appcation demo:
+### Whole application demo:
 
 # OverView:
 
